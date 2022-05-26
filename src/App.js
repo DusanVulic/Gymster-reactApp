@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // PAGES
 
@@ -15,23 +15,13 @@ function App() {
     <div className="App">
       <Router>
         <div className="container">
-          <Switch>
-            <Route exact path="/">
-              <Dashborad />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-            <Route path="/projects/:id">
-              <Project />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Dashborad />} />
+            <Route path="create" element={<Create />} />
+            <Route path="projects/:id" element={<Project />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+          </Routes>
         </div>
       </Router>
     </div>
