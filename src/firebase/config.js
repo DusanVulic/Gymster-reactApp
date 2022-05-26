@@ -16,14 +16,14 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-//initialize services - firestore
+//initialize services - firestore and uth
 const projectFirestore = firebase.firestore();
 
-//initialize auth
+//auth
 
 const projectAuth = firebase.auth();
 
-//initialize
+//initialize timestamp
 
 const timestamp = firebase.firestore.Timestamp;
 
