@@ -6,10 +6,37 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailError, setThumbnailError] = useState(null);
+
+  const handleFileChange = (e) => {
+    setThumbnail(null);
+    let selected = e.target.files[0];
+    console.log(selected);
+    if (!selected) {
+      setThumbnailError("Please select a file");
+      return;
+    }
+    if (!selected.type.includes("image")) {
+      setThumbnailError("selected file must be image");
+      return;
+    }
+    if (selected.size > 300000) {
+      setThumbnailError("selected image must be less than 10KB");
+      return;
+    }
+    setThumbnailError(null);
+    setThumbnail(selected);
+    console.log("thumbnail updated");
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(email, password, displayName, thumbnail);
+  };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={onSubmitHandler}>
       <h3>signup</h3>
       <label>
         <span>email:</span>
@@ -40,13 +67,12 @@ const Signup = () => {
       </label>
       <label>
         <span>profile image:</span>
-        <input
-          required
-          type="file"
-          value={thumbnail}
-          onChange={(e) => setThumbnail(e.target.value)}
-        />
+        <input required type="file" onChange={handleFileChange} />
+        {thumbnailError && <div className="error"> {thumbnailError} </div>}
       </label>
+      <button className="btn" type="submit">
+        Sign up
+      </button>
     </form>
   );
 };
