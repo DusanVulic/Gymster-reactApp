@@ -27,8 +27,12 @@
     margin-top: -8px;
 }
 
-.navbar a {
+.link {
     color: #333;
     text-decoration: none;
     margin-right: 20px;
+}
+
+.link:hover {
+    color: #4979ff;
 }

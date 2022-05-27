@@ -16,10 +16,14 @@ const Navbar = () => {
           <span>Paperfox gymster</span>
         </li>
         <li>
-          <Link to="login">login</Link>
+          <Link to="login" className={styles.link}>
+            login
+          </Link>
         </li>
         <li>
-          <Link to="signup">signup</Link>
+          <Link to="signup" className={styles.link}>
+            signup
+          </Link>
         </li>
         <li>
           <button className="btn">Logout</button>
