@@ -7,7 +7,13 @@ import { Link } from "react-router-dom";
 
 import logo from "../assets/logo.png";
 
+// import useLogut hook
+
+import { useLogout } from "../hooks/useLogout";
+
 const Navbar = () => {
+  const { logout, isPending } = useLogout();
+
   return (
     <div className={styles.navbar}>
       <ul className={styles.list}>
@@ -26,7 +32,16 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <button className="btn">Logout</button>
+          {!isPending && (
+            <button className="btn" onClick={logout}>
+              Logout
+            </button>
+          )}
+          {isPending && (
+            <button className="btn" disabled>
+              Logging out...
+            </button>
+          )}
         </li>
       </ul>
     </div>
