@@ -4,17 +4,19 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // PAGES
 
-import Dashborad from "./components/dashboard/Dashborad";
-import Login from "./components/login/Login";
-import Create from "./components/create/Create";
-import Project from "./components/project/Project";
-import Signup from "./components/signup/Signup";
+import Dashborad from "./pages/dashboard/Dashborad";
+import Login from "./pages/login/Login";
+import Create from "./pages/create/Create";
+import Project from "./pages/project/Project";
+import Signup from "./pages/signup/Signup";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div className="container">
+          <Navbar />
           <Routes>
             <Route exact path="/" element={<Dashborad />} />
             <Route path="create" element={<Create />} />
