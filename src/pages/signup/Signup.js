@@ -6,6 +6,10 @@ import styles from "./Signup.module.css";
 
 import { useSignup } from "../../hooks/useSignup";
 
+//import useNavigate
+
+import { useNavigate } from "react-router-dom";
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +21,9 @@ const Signup = () => {
 
   const { signup, isPending, error } = useSignup();
 
+  /// navigate
+  const navigate = useNavigate();
+  ///
   const handleFileChange = (e) => {
     setThumbnail(null);
     let selected = e.target.files[0];
@@ -42,6 +49,7 @@ const Signup = () => {
     e.preventDefault();
     console.log(email, password, displayName, thumbnail);
     signup(email, password, displayName, thumbnail);
+    navigate("/");
   };
 
   return (

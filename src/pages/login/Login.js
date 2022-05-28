@@ -7,16 +7,26 @@ import styles from "./Login.module.css";
 
 import { useLogin } from "../../hooks/useLogin";
 
+//import useNavigate
+
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { login, isPending, error } = useLogin();
 
+  //navigate
+  const navigate = useNavigate();
+  //
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(email, password);
     login(email, password);
+
+    navigate("/");
   };
 
   return (
