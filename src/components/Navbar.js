@@ -11,8 +11,16 @@ import logo from "../assets/logo.png";
 
 import { useLogout } from "../hooks/useLogout";
 
+//auth context
+
+import { useAuthContext } from "../hooks/useAuthContext";
+
 const Navbar = () => {
   const { logout, isPending } = useLogout();
+
+  //do I have a user ? fir conditional rendering
+
+  const { user } = useAuthContext();
 
   return (
     <div className={styles.navbar}>
@@ -21,28 +29,34 @@ const Navbar = () => {
           <img src={logo} alt="gymster" className={styles.logo} />
           <span>Paperfox gymster</span>
         </li>
-        <li>
-          <Link to="login" className={styles.link}>
-            login
-          </Link>
-        </li>
-        <li>
-          <Link to="signup" className={styles.link}>
-            signup
-          </Link>
-        </li>
-        <li>
-          {!isPending && (
-            <button className="btn" onClick={logout}>
-              Logout
-            </button>
-          )}
-          {isPending && (
-            <button className="btn" disabled>
-              Logging out...
-            </button>
-          )}
-        </li>
+        {!user && (
+          <li>
+            <Link to="login" className={styles.link}>
+              login
+            </Link>
+          </li>
+        )}
+        {!user && (
+          <li>
+            <Link to="signup" className={styles.link}>
+              signup
+            </Link>
+          </li>
+        )}
+        {user && (
+          <li>
+            {isPending && (
+              <button className="btn" onClick={logout}>
+                Logout
+              </button>
+            )}
+            {!isPending && (
+              <button className="btn" disabled>
+                Logging out...
+              </button>
+            )}
+          </li>
+        )}
       </ul>
     </div>
   );

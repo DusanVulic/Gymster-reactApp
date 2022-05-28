@@ -19,7 +19,6 @@ import Sidebar from "./components/Sidebar";
 
 //auth context
 
-import { AuthContext } from "./context/AuthContext";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
