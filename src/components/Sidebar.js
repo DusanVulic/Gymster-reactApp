@@ -33,7 +33,7 @@ const Sidebar = () => {
             <li>
               <NavLink to="create">
                 <img src={AddIcon} alt="add project icon" />
-                <span>New project</span>
+                <span>New Workout</span>
               </NavLink>
             </li>
           </ul>
