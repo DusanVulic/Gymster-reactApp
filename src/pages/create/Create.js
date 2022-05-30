@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //import REACT SELECT
 
@@ -6,6 +6,10 @@ import Select from "react-select";
 
 //styles
 import styles from "./Create.module.css";
+
+//import use collection
+
+import { useCollection } from "../../hooks/useCollection";
 
 // create  workout category
 
@@ -27,8 +31,30 @@ const Create = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log("form submitovana", name, details, date, category.value);
+    console.log(
+      "form submitovana",
+      name,
+      details,
+      date,
+      category.value,
+      assignedUsers
+    );
   };
+
+  //create user otions
+
+  const { documents } = useCollection("users");
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    if (documents) {
+      const options = documents.map((user) => {
+        return { value: user, label: user.displayName };
+      });
+      setUsers(options);
+    }
+  }, [documents]);
 
   return (
     <div className={styles.form}>
@@ -69,7 +95,11 @@ const Create = () => {
         </label>
         <label>
           <span>Asign to</span>
-          <Select />
+          <Select
+            options={users}
+            onChange={(option) => setAssignedUsers(option)}
+            isMulti
+          />
         </label>
         <button className="btn">Add workout</button>
       </form>
