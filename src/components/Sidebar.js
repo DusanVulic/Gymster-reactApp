@@ -7,14 +7,20 @@ import styles from "./Sidebar.module.css";
 
 import DashboardIcon from "../assets/dashboard_icon.svg";
 import AddIcon from "../assets/add_icon.svg";
+//import avatar component
+import Avatar from "./Avatar";
+
+//import useAuthContext to get users propertied
+import { useAuthContext } from "./../hooks/useAuthContext";
 
 const Sidebar = () => {
+  const { user } = useAuthContext();
   return (
     <div className={styles.sidebar}>
       <div className={styles.content}>
         <div className={styles.user}>
-          {/* avatar and user name later*/}
-          <p>Hey user</p>
+          <Avatar src={user.photoURL} />
+          <p>Hey {user.displayName}</p>
         </div>
         <nav className={styles.links}>
           <ul>
