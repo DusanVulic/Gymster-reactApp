@@ -1,7 +1,22 @@
 import React, { useState } from "react";
 
+//import REACT SELECT
+
+import Select from "react-select";
+
 //styles
 import styles from "./Create.module.css";
+
+// create  workout category
+
+const categories = [
+  { value: "Shoulders", label: "Shoulders" },
+  { value: "Legs", label: "Legs" },
+  { value: "ABS", label: "ABS" },
+  { value: "Chest", label: "Chest" },
+  { value: "Back", label: "Back" },
+  { value: "Arms", label: "Arms" },
+];
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -12,7 +27,7 @@ const Create = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log("form submitovana");
+    console.log("form submitovana", name, details, date, category.value);
   };
 
   return (
@@ -29,7 +44,7 @@ const Create = () => {
           />
         </label>
         <label>
-          <span>Workout name</span>
+          <span>Workout details</span>
           <textarea
             required
             value={details}
@@ -47,11 +62,14 @@ const Create = () => {
         </label>
         <label>
           <span>Workout category </span>
-          {/* select here */}
+          <Select
+            options={categories}
+            onChange={(option) => setCategory(option)}
+          />
         </label>
         <label>
           <span>Asign to</span>
-          {/* assignee here */}
+          <Select />
         </label>
         <button className="btn">Add workout</button>
       </form>

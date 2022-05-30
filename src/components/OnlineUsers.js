@@ -12,8 +12,6 @@ import Avatar from "./Avatar";
 const OnlineUsers = () => {
   const { isPending, documents, error } = useCollection("users");
 
-  console.log(documents);
-
   return (
     <div className={styles.list}>
       <h2>All Users</h2>
