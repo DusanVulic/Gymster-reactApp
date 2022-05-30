@@ -29,8 +29,20 @@ const Create = () => {
   const [category, setCategory] = useState("");
   const [assignedUsers, setAssignedUsers] = useState([]);
 
+  const [formError, setFormError] = useState(null);
+
   const submitForm = (e) => {
     e.preventDefault();
+
+    setFormError(null);
+    if (!category) {
+      setFormError("please select workout category");
+      return;
+    }
+    if (assignedUsers.length < 1) {
+      setFormError("please assign workout for at least one user");
+      return;
+    }
     console.log(
       "form submitovana",
       name,
@@ -102,6 +114,7 @@ const Create = () => {
           />
         </label>
         <button className="btn">Add workout</button>
+        {formError && <p className="error">{formError}</p>}
       </form>
     </div>
   );
