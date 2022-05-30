@@ -16,7 +16,7 @@ import Project from "./pages/project/Project";
 import Signup from "./pages/signup/Signup";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-
+import OnlineUsers from "./components/OnlineUsers";
 //auth context
 
 import { useAuthContext } from "./hooks/useAuthContext";
@@ -46,6 +46,7 @@ function App() {
               <Route path="signup" element={<Signup />} />
             </Routes>
           </div>
+          {user && <OnlineUsers />}
         </Router>
       )}
     </div>
