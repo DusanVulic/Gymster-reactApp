@@ -48,7 +48,7 @@ const Create = () => {
   const { user } = useAuthContext();
 
   //add project document function
-  const { response, addDocument } = useFirestore("projects");
+  const { response, addDocument } = useFirestore("workouts");
   //
 
   //Navigate
