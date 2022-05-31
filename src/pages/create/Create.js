@@ -11,6 +11,14 @@ import styles from "./Create.module.css";
 
 import { useCollection } from "../../hooks/useCollection";
 
+//import timestamp
+
+import { timestamp } from "../../firebase/config";
+
+// import useAuth to get an user
+
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 // create  workout category
 
 const categories = [
@@ -31,6 +39,8 @@ const Create = () => {
 
   const [formError, setFormError] = useState(null);
 
+  const { user } = useAuthContext();
+
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -43,14 +53,32 @@ const Create = () => {
       setFormError("please assign workout for at least one user");
       return;
     }
-    console.log(
-      "form submitovana",
+
+    const createdBy = {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
+
+    const assignedUSersList = assignedUsers.map((u) => {
+      return {
+        displayName: u.value.displayName,
+        photoURL: u.value.photoURL,
+        id: u.value.id,
+      };
+    });
+
+    const project = {
       name,
       details,
-      date,
-      category.value,
-      assignedUsers
-    );
+      category: category.value,
+      dueDate: timestamp.fromDate(new Date(date)),
+      comments: [],
+      createdBy,
+      assignedUSersList,
+    };
+
+    console.log("form submitovana", project);
   };
 
   //create user otions
