@@ -19,6 +19,12 @@ import { timestamp } from "../../firebase/config";
 
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+//import useFirestore to import function
+import { useFirestore } from "./../../hooks/useFirestore";
+
+//use navigate to redirect after submitting project
+import { useNavigate } from "react-router-dom";
+
 // create  workout category
 
 const categories = [
@@ -41,7 +47,14 @@ const Create = () => {
 
   const { user } = useAuthContext();
 
-  const submitForm = (e) => {
+  //add project document function
+  const { response, addDocument } = useFirestore("projects");
+  //
+
+  //Navigate
+  const navigate = useNavigate();
+  //
+  const submitForm = async (e) => {
     e.preventDefault();
 
     setFormError(null);
@@ -78,7 +91,10 @@ const Create = () => {
       assignedUSersList,
     };
 
-    console.log("form submitovana", project);
+    await addDocument(project);
+    if (!response.error) {
+      navigate("/");
+    }
   };
 
   //create user otions
