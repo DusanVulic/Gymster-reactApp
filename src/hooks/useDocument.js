@@ -18,7 +18,7 @@ export const useDocument = (collection, id) => {
           setDocument({ ...snapshot.data(), id: snapshot.id });
           setError(null);
         } else {
-          setError("there is no such workout here, create one ? ");
+          setError("there is no such workout here");
         }
       },
       (error) => {

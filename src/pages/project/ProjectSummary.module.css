@@ -1,0 +1,36 @@
+.summary {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.date {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #4979ff;
+}
+
+.details {
+    margin: 30px 0;
+    color: var(--text-color);
+    line-height: 1.8em;
+    font-size: 0.9em;
+}
+
+.summary h4 {
+    color: #4979ff;
+    font-size: 0.9em;
+}
+
+.users {
+    display: flex;
+    margin-top: 20px;
+}
+
+.img {
+    margin-right: 20px;
+}
+
+.projectbtn {
+    margin-top: 20px;
+}

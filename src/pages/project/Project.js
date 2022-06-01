@@ -8,6 +8,7 @@ import { useDocument } from "../../hooks/useDocument";
 
 //styles
 import styles from "./Project.module.css";
+import ProjectSummary from "./ProjectSummary";
 
 const Project = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const Project = () => {
 
   return (
     <div className={styles.details}>
-      <h2>{document.name}</h2>
+      <ProjectSummary workout={document} />
     </div>
   );
 };
