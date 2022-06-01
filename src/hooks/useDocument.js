@@ -14,8 +14,12 @@ export const useDocument = (collection, id) => {
 
     const unsubscribe = ref.onSnapshot(
       (snapshot) => {
-        setDocument({ ...snapshot.data(), id: snapshot.id });
-        setError(null);
+        if (snapshot.data()) {
+          setDocument({ ...snapshot.data(), id: snapshot.id });
+          setError(null);
+        } else {
+          setError("there is no such workout here, create one ? ");
+        }
       },
       (error) => {
         console.log(error.message);
