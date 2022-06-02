@@ -27,7 +27,7 @@ const Project = () => {
   return (
     <div className={styles.details}>
       <ProjectSummary workout={document} />
-      <Comments />
+      <Comments workout={document} />
     </div>
   );
 };

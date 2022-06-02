@@ -5,10 +5,18 @@ import styles from "./Comments.module.css";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "./../../hooks/useAuthContext";
 
-const Comments = () => {
+//import useFirestore
+
+import { useFirestore } from "../../hooks/useFirestore";
+
+const Comments = ({ workout }) => {
   const [comment, setComment] = useState("");
 
   const { user } = useAuthContext();
+
+  // update document function from useFirestore
+
+  const { updateDocument, response } = useFirestore("workouts");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -22,6 +30,13 @@ const Comments = () => {
     };
 
     console.log(commentToAdd);
+
+    await updateDocument(workout.id, {
+      comments: [...workout.comments, commentToAdd],
+    });
+    if (!response.error) {
+      setComment("");
+    }
   };
 
   return (
