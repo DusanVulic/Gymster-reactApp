@@ -8,6 +8,7 @@ import { useAuthContext } from "./../../hooks/useAuthContext";
 //import useFirestore
 
 import { useFirestore } from "../../hooks/useFirestore";
+import Avatar from "./../../components/Avatar";
 
 const Comments = ({ workout }) => {
   const [comment, setComment] = useState("");
@@ -41,6 +42,24 @@ const Comments = ({ workout }) => {
 
   return (
     <div className={styles.comments}>
+      <ul>
+        {workout.comments.length > 0 &&
+          workout.comments.map((comment) => (
+            <li key={comment.id} className={styles.list}>
+              <div className={styles.author}>
+                <Avatar src={comment.photoURL} />
+                <p>{comment.displayName}</p>
+              </div>
+              <div className={styles.date}>
+                <p>date here</p>
+              </div>
+              <div className={styles.content}>
+                <p>{comment.content}</p>
+              </div>
+            </li>
+          ))}
+      </ul>
+
       <form className="commment" onSubmit={onSubmitHandler}>
         <label>
           <span>add new comment</span>
