@@ -22,7 +22,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 //import useFirestore to import function
 import { useFirestore } from "./../../hooks/useFirestore";
 
-//use navigate to redirect after submitting project
+//use navigate to redirect after submitting workout
 import { useNavigate } from "react-router-dom";
 
 // create  workout category

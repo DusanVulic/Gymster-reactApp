@@ -12,6 +12,9 @@ import { useFirestore } from "../../hooks/useFirestore";
 
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+//use navigate to redirect after deleting workout
+import { useNavigate } from "react-router-dom";
+
 const ProjectSummary = ({ workout }) => {
   const { name, dueDate, details, assignedUSersList } = workout;
 
@@ -26,9 +29,15 @@ const ProjectSummary = ({ workout }) => {
 
   const { deleteDocument } = useFirestore("workouts");
 
+  //Navigate after deleting
+  const navigate = useNavigate();
+  //
+
   // I could do this way or directly at the button but not awaka instantly but  use : onClick={(e)=>handleDelete(workout.id))}
   const handleDelete = (e) => {
     deleteDocument(workout.id);
+
+    navigate("/");
   };
 
   return (
