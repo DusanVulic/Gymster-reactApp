@@ -42,6 +42,7 @@ const Comments = ({ workout }) => {
 
   return (
     <div className={styles.comments}>
+      <h4 className={styles.title}>project comments:</h4>
       <ul>
         {workout.comments.length > 0 &&
           workout.comments.map((comment) => (

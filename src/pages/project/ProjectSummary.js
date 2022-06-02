@@ -4,6 +4,14 @@ import Avatar from "../../components/Avatar";
 //styles
 import styles from "./ProjectSummary.module.css";
 
+//import USEFIRESTORE
+
+import { useFirestore } from "../../hooks/useFirestore";
+
+//check user
+
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 const ProjectSummary = ({ workout }) => {
   const { name, dueDate, details, assignedUSersList } = workout;
 
@@ -11,10 +19,23 @@ const ProjectSummary = ({ workout }) => {
 
   //assignedUSersList - created that property in firestore - typo
 
+  //getting user
+  const { user } = useAuthContext();
+
+  //delete document function
+
+  const { deleteDocument } = useFirestore("workouts");
+
+  // I could do this way or directly at the button but not awaka instantly but  use : onClick={(e)=>handleDelete(workout.id))}
+  const handleDelete = (e) => {
+    deleteDocument(workout.id);
+  };
+
   return (
     <div>
       <div className={styles.summary}>
         <h3>{name}</h3>
+        <p>by {workout.createdBy.displayName}</p>
         <p className={styles.date}>
           workout due by {dueDate.toDate().toDateString()}
         </p>
@@ -30,6 +51,11 @@ const ProjectSummary = ({ workout }) => {
             ))}
         </div>
       </div>
+      {user.uid === workout.createdBy.id && (
+        <button className="btn" onClick={handleDelete}>
+          mark as completed
+        </button>
+      )}
     </div>
   );
 };

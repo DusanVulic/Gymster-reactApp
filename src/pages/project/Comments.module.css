@@ -10,8 +10,8 @@
 
 /*  sdsdssdsdsddds*/
 
-.project-comments h4 {
-    color: var(--heading-color);
+.title {
+    color: #4979ff;
 }
 
 .list {
@@ -36,7 +36,7 @@
 }
 
 .date {
-    color: var(--text-color);
+    color: #4979ff;
     font-size: 0.9em;
     margin: 4px 0 10px;
 }
