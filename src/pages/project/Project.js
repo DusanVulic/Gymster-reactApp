@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 //import useDocument
 import { useDocument } from "../../hooks/useDocument";
+import Comments from "./Comments";
 
 //styles
 import styles from "./Project.module.css";
@@ -26,6 +27,7 @@ const Project = () => {
   return (
     <div className={styles.details}>
       <ProjectSummary workout={document} />
+      <Comments />
     </div>
   );
 };
