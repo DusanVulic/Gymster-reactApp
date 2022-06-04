@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
 //styles
 import styles from "./WorkoutFilter.module.css";
 // filter list
 
-const filterList = ["all", "mine", "shoulders", "legs", "abs", "chest", "back"];
+const filterList = [
+  "all",
+  "mine",
+  "shoulders",
+  "legs",
+  "abs",
+  "chest",
+  "back",
+  "arms",
+];
 
-const WorkoutFilter = () => {
-  const [currentFilter, setCurrentFilter] = useState("all");
+const WorkoutFilter = ({ currentFilter, changeFilter }) => {
   const handleClick = (newFilter) => {
     console.log(newFilter);
-    setCurrentFilter(newFilter);
+    changeFilter(newFilter);
   };
 
   return (
