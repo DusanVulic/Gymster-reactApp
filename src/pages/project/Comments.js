@@ -10,6 +10,10 @@ import { useAuthContext } from "./../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import Avatar from "./../../components/Avatar";
 
+//FNS
+
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
 const Comments = ({ workout }) => {
   const [comment, setComment] = useState("");
 
@@ -52,7 +56,11 @@ const Comments = ({ workout }) => {
                 <p>{comment.displayName}</p>
               </div>
               <div className={styles.date}>
-                <p>date here</p>
+                <p>
+                  {formatDistanceToNow(comment.createdAt.toDate(), {
+                    addSuffix: true,
+                  })}
+                </p>
               </div>
               <div className={styles.content}>
                 <p>{comment.content}</p>
