@@ -40,14 +40,6 @@ const ProjectSummary = ({ workout }) => {
     navigate("/");
   };
 
-  ///finish button handler
-
-  const [finished, setFinished] = useState(false);
-
-  const finishHandler = () => {
-    setFinished(!finished);
-  };
-
   return (
     <div>
       <div className={styles.summary}>
@@ -68,20 +60,6 @@ const ProjectSummary = ({ workout }) => {
             ))}
         </div>
       </div>
-      {/* finish button */}
-      {user.uid === workout.createdBy.id && (
-        <button className={styles.finish} onClick={finishHandler}>
-          completed
-        </button>
-      )}
-
-      {/* finish button */}
-
-      {finished && (
-        <p className={styles.finished} finished>
-          finished
-        </p>
-      )}
 
       {user.uid === workout.createdBy.id && (
         <button className="btn" onClick={handleDelete}>
