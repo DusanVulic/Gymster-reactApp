@@ -4,16 +4,7 @@ import React from "react";
 import styles from "./WorkoutFilter.module.css";
 // filter list
 
-const filterList = [
-  "all",
-  "mine",
-  "shoulders",
-  "legs",
-  "abs",
-  "chest",
-  "back",
-  "arms",
-];
+const filterList = ["all", "Shoulders", "Legs", "ABS", "Chest", "Back", "Arms"];
 
 const WorkoutFilter = ({ currentFilter, changeFilter }) => {
   const handleClick = (newFilter) => {
