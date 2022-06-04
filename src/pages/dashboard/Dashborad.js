@@ -8,11 +8,7 @@ import { useCollection } from "../../hooks/useCollection";
 import WorkoutList from "../../components/WorkoutList";
 import WorkoutFilter from "./WorkoutFilter";
 
-//use Auth
-import { useAuthContext } from "../../hooks/useAuthContext";
-
 const Dashborad = () => {
-  const { user } = useAuthContext();
   const { documents, error } = useCollection("workouts");
   const [currentFilter, setCurrentFilter] = useState("all");
 
